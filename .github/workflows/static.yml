@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nᴇ✘ ɢᴜᴀɴ</title>
+    <link rel="icon" href="clock.png.png">
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: row;
+            background-image: url('tutu'); /* Reemplaza la URL con la imagen de la Tierra */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; 
+            margin: 0;
+        }
+
+        .container,
+        .statistics {
+            width: 50%;
+            padding: 20px;
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo blanco semitransparente */
+            border: 2px solid #814343; /* Borde sólido */
+            box-sizing: border-box; /* Incluye el borde en el ancho y alto */
+            border-radius: 10px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al hacer clic */
+            transition: background-color 0.3s; /* Agrega una transición suave para el cambio de color */
+        }
+
+        .container:hover,
+        .statistics:hover {
+            background-color: rgb(20, 20, 20); /* Cambia el fondo al pasar el ratón por encima */
+        }
+
+        h1, h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2350b1; /* Color del texto */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: calc(100% - 20px); /* Ajuste para compensar el padding */
+            height: 150px;
+            resize: none;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; /* Borde del área de texto */
+            border-radius: 5px; /* Bordes redondeados */
+            padding: 10px; /* Espaciado interno */
+            font-size: 1em; /* Tamaño de fuente */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #333; /* Color del texto */
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #ff0000; /* Color del texto */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" onclick="iluminar(this)">
+        <h1>Cᴏɴᴛᴀᴅᴏʀ ᴅᴇ Tᴇxᴛᴏ</h1>
+        
+        <label for="texto">☞Iɴɢʀᴇꜱᴀ ᴛᴜ ᴛᴇxᴛᴏ☜</label>
+        <textarea id="texto" oninput="contarTexto()"></textarea>
+    </div>
+
+    <div class="statistics" onclick="iluminar(this)">
+        <h2>Eꜱᴛᴀᴅíꜱᴛɪᴄᴀꜱ:</h2>
+        <p>Pᴀʟᴀʙʀᴀꜱ: <span id="palabras">0</span></p>
+        <p>Cᴀʀᴀᴄᴛᴇʀᴇꜱ (ᴄᴏɴ ᴇꜱᴘᴀᴄɪᴏꜱ): <span id="caracteresConEspacios">0</span></p>
+        <p>Cᴀʀᴀᴄᴛᴇʀᴇꜱ (ꜱɪɴ ᴇꜱᴘᴀᴄɪᴏꜱ): <span id="caracteresSinEspacios">0</span></p>
+        <p>Páʀʀᴀғᴏꜱ: <span id="parrafos">0</span></p>
+        <p>Oʀᴀᴄɪᴏɴᴇꜱ: <span id="oraciones">0</span></p>
+
+        
+        
+            <h2>Qᴜé ᴇꜱ:</h2>
+        
+        <p>¿Qué es Contador de palabras?</p>
+
+        <p>Contador de palabras y contador de caracteres es una herramienta que te permite contar la cantidad de palabras o de caracteres que posee un texto. Simplemente, debes posicionar el cursor dentro de la ventana y comenzar a escribir con el teclado. El sistema contará automáticamente la cantidad de palabras y caracteres que has ingresado. También es posible copiar y pegar un texto que hayas escrito fuera del sistema; automáticamente mostrará el recuento de palabras y caracteres del texto copiado.</p>
+    </div>
+
+    <script>
+        function iluminar(elemento) {
+            elemento.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+        }
+
+        function contarTexto() {
+            var texto = document.getElementById('texto').value;
+
+            // Contar palabras
+            var palabras = texto.match(/\b\w+\b/g); 
+            document.getElementById('palabras').textContent = palabras ? palabras.length : 0;
+
+            // Contar caracteres (con y sin espacios)
+            var caracteresConEspacios = texto.length;
+            document.getElementById('caracteresConEspacios').textContent = caracteresConEspacios;
+
+            var caracteresSinEspacios = texto.replace(/\s/g, '').length;
+            document.getElementById('caracteresSinEspacios').textContent = caracteresSinEspacios;
+
+            // Contar párrafos
+            var parrafos = texto.split('\n').filter(function (parrafo) {
+                return parrafo.trim() !== '';
+            });
+            document.getElementById('parrafos').textContent = parrafos.length;
+
+            // Contar oraciones
+            var oraciones = texto.split(/[.!?]+/).filter(function (oracion) {
+                return oracion.trim() !== '';
+            });
+            document.getElementById('oraciones').textContent = oraciones.length;
+        }
+    </script>
+    <script>
+        function iluminar(elemento) {
+            elemento.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+            setTimeout(function() {
+                elemento.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }, 300); // Cambia el fondo de nuevo después de 300 milisegundos (0.3 segundos)
+        }
+    
+        function contarTexto() {
+            var texto = document.getElementById('texto').value; 
+    
+            // Contar palabras
+            var palabras = texto.match(/\b\w+\b/g);
+            document.getElementById('palabras').textContent = palabras ? palabras.length : 0;
+    
+            // Contar caracteres (con y sin espacios)
+            var caracteresConEspacios = texto.length;
+            document.getElementById('caracteresConEspacios').textContent = caracteresConEspacios;
+    
+            var caracteresSinEspacios = texto.replace(/\s/g, '').length;
+            document.getElementById('caracteresSinEspacios').textContent = caracteresSinEspacios;
+    
+            // Contar párrafos
+            var parrafos = texto.split('\n').filter(function (parrafo) {
+                return parrafo.trim() !== '';
+            });
+            document.getElementById('parrafos').textContent = parrafos.length;
+    
+            // Contar oraciones
+            var oraciones = texto.split(/[.!?]+/).filter(function (oracion) {
+                return oracion.trim() !== '';
+            });
+            document.getElementById('oraciones').textContent = oraciones.length;
+        }
+    </script>
+    
+    
+
+</body>
+</html>
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
